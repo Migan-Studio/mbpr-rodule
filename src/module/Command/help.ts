@@ -6,7 +6,7 @@ import {
 } from 'discord.js'
 import { Command } from '.'
 
-export default class extends Command {
+export = class extends Command {
   public constructor() {
     super()
     this.name = 'help'
@@ -15,16 +15,12 @@ export default class extends Command {
     this.descriptionLocalizations = { ko: 'mbpr 프로젝트의 도움말' }
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
-    let a
-    interaction.client.commandHandler.modules.forEach(command => {})
-    if (interaction.locale === Locale.Korean)
-      interaction.reply({
-        embeds: [
-          {
-            title: `${interaction.client.user!.username}의 도움말`,
-            description: `${codeBlock('md')}`,
-          },
-        ],
-      })
+    const command = interaction.client.commandHandler.modules
+      .map(command => `- ${command.name}`)
+      .join('\n')
+
+    interaction.reply({
+      content: codeBlock('md', `${command}`),
+    })
   }
 }

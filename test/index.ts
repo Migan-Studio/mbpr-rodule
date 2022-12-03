@@ -1,7 +1,7 @@
 import { GatewayIntentBits } from 'discord.js'
 import path from 'path'
 import { Mbpr } from '../dist'
-import { token } from './config.json'
+const { token } = require('./config.json')
 
 const client = new Mbpr(
   {
@@ -13,3 +13,5 @@ const client = new Mbpr(
     defaultHelpCommand: true,
   }
 )
+
+client.start()

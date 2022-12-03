@@ -1,12 +1,9 @@
 import { type Mbpr } from '../../Client'
-import { Collection } from 'discord.js'
+import { Collection, InteractionType } from 'discord.js'
 import { type Command } from './Command'
 import { readdirSync } from 'fs'
+import { red, white } from '../Loger'
 
-/**
- *
- *
- */
 export class MbprCommandHandler {
   mbpr: Mbpr
   public constructor(mbpr: Mbpr) {
@@ -16,7 +13,9 @@ export class MbprCommandHandler {
 
   private register(module: Command) {
     if (!module.name)
-      throw new Error('[MbprCommandHandler] Command name is undefined.')
+      throw this.mbpr.loger.sendErrorMessage(
+        `Command name is ${red}undefined.${white}`
+      )
     this.modules.set(module.name, module)
     this.mbpr.once('ready', () => {
       this.mbpr
@@ -31,8 +30,8 @@ export class MbprCommandHandler {
           defaultPermission: module.defaultPermission!,
         })
         .then(() => {
-          console.info(
-            `[MbprCommandHandler] Command ${module.name} has been loaded.`
+          this.mbpr.loger.sendConsoleMessage(
+            `Command ${module.name} has been loaded.`
           )
         })
     })
@@ -54,5 +53,27 @@ export class MbprCommandHandler {
         }
       }
     }
+
+    if (this.mbpr.MbprOptions.defaultHelpCommand) {
+      const helpCommands = require('./help')
+      const command = new helpCommands()
+      this.register(command)
+    } else this.mbpr.loger.sendConsoleMessage('Default help command is off.')
+
+    this.mbpr.on('interactionCreate', async interaction => {
+      if (interaction.type === InteractionType.ApplicationCommand) {
+        if (!interaction.isChatInputCommand()) return
+
+        const command = this.modules.get(interaction.commandName)
+
+        if (!command) return
+
+        try {
+          await command.execute(interaction)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    })
   }
 }

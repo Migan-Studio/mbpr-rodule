@@ -1,5 +1,5 @@
 import { type Mbpr } from '../../Client'
-import { green, white, blue } from '.'
+import { green, white, blue, red } from '.'
 
 export class Loger {
   mbpr: Mbpr
@@ -10,10 +10,22 @@ export class Loger {
   public on() {
     this.mbpr.once('ready', () => {
       console.log(
-        `${white}[${green}${new Date().toISOString()}${white}] Bot name: ${blue}${
+        `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] Bot name: ${blue}${
           this.mbpr.user!.username
         }${white}`
       )
     })
+  }
+
+  public sendConsoleMessage(content: string) {
+    console.log(
+      `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] ${content}`
+    )
+  }
+
+  public sendErrorMessage(content: string) {
+    return new Error(
+      `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] ${content}`
+    )
   }
 }
