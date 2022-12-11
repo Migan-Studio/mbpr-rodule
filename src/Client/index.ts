@@ -1,7 +1,7 @@
 import { Client, type ClientOptions } from 'discord.js'
 import { MbprCommandHandler } from '..'
 import { type MbprOptions } from '..'
-import { Loger } from '../module/Loger'
+import { Loger } from '../module'
 
 export class Mbpr extends Client {
   MbprOptions: MbprOptions
