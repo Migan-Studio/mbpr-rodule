@@ -1,10 +1,10 @@
 import { ChatInputCommandInteraction, CacheType } from 'discord.js'
-import { Command } from '../../../dist'
+import { Command } from '../../..'
 
 export default class test extends Command {
   constructor() {
     super()
-    // this.name = 'a'
+    this.name = 'a'
     this.description = 'a'
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {

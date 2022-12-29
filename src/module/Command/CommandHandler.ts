@@ -2,7 +2,7 @@ import { type Mbpr } from '../../Client'
 import { Collection, InteractionType } from 'discord.js'
 import { type Command } from './Command'
 import { readdirSync } from 'fs'
-import { red, white } from '../Loger'
+import chalk from 'chalk'
 
 export class MbprCommandHandler {
   mbpr: Mbpr
@@ -14,7 +14,7 @@ export class MbprCommandHandler {
   private register(module: Command) {
     if (!module.name)
       throw this.mbpr.loger.sendErrorMessage(
-        `Command name is ${red}undefined.${white}`
+        `Command name is ${chalk.red('undefined')}.`
       )
     this.modules.set(module.name, module)
     this.mbpr.once('ready', () => {
@@ -31,14 +31,14 @@ export class MbprCommandHandler {
         })
         .then(() => {
           this.mbpr.loger.sendConsoleMessage(
-            `Command ${module.name} has been loaded.`
+            `Command ${chalk.cyan(module.name)} has been loaded.`
           )
         })
     })
   }
 
   public loadAll() {
-    const DIR = this.mbpr.MbprOptions.commandFolderLoadDir
+    const DIR = this.mbpr.mbprOptions.commandFolderLoadDir
     const commandDirectory = readdirSync(DIR)
 
     for (const folder of commandDirectory) {
@@ -54,7 +54,7 @@ export class MbprCommandHandler {
       }
     }
 
-    if (this.mbpr.MbprOptions.defaultHelpCommand) {
+    if (this.mbpr.mbprOptions.defaultHelpCommand) {
       const helpCommands = require('./help')
       const command = new helpCommands()
       this.register(command)

@@ -1,5 +1,6 @@
 import { type Mbpr } from '../../Client'
-import { green, white, blue, red } from '.'
+import chalk from 'chalk'
+import { MbprError } from '../../error'
 
 export class Loger {
   mbpr: Mbpr
@@ -9,23 +10,20 @@ export class Loger {
 
   public on() {
     this.mbpr.once('ready', () => {
-      console.log(
-        `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] Bot name: ${blue}${
-          this.mbpr.user!.username
-        }${white}`
+      this.sendConsoleMessage(
+        `Bot name: ${chalk.cyan(this.mbpr.user!.username)}`
       )
     })
   }
 
   public sendConsoleMessage(content: string) {
     console.log(
-      `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] ${content}`
+      // `${white}[${green}${new Date().toISOString()}${white}] ${reset}[Mbpr] ${content}${reset}`
+      `[${chalk.green(new Date().toISOString())}] [Mbpr] ${content}`
     )
   }
 
   public sendErrorMessage(content: string) {
-    return new Error(
-      `${white}[${green}${new Date().toISOString()}${white}] [Mbpr] ${content}`
-    )
+    return new MbprError(`${content}`)
   }
 }

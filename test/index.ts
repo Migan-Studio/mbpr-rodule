@@ -1,6 +1,6 @@
 import { GatewayIntentBits } from 'discord.js'
 import path from 'path'
-import { Mbpr } from '../dist'
+import { Mbpr } from '..'
 const { token } = require('./config.json')
 
 const client = new Mbpr(
