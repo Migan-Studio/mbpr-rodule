@@ -1,8 +1,8 @@
-import { MbprCommandHandler } from '../module'
-import { Loger } from '../module'
+import { type Loger } from '../module'
+import { type directory } from 'discommand'
 
 export interface MbprOptions {
-  commandFolderLoadDir: string
+  directory: directory
   defaultHelpCommand: boolean
   token: string
 }
@@ -10,7 +10,6 @@ export interface MbprOptions {
 declare module 'discord.js' {
   interface Client {
     loger: Loger
-    commandHandler: MbprCommandHandler
     mbprOptions: MbprOptions
     start(): void
   }

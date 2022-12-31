@@ -1,5 +1,5 @@
 import { GatewayIntentBits } from 'discord.js'
-import path from 'path'
+import { join } from 'path'
 import { Mbpr } from '..'
 const { token } = require('./config.json')
 
@@ -9,7 +9,9 @@ const client = new Mbpr(
   },
   {
     token,
-    commandFolderLoadDir: path.join(__dirname, 'Commands'),
+    directory: {
+      command: join(__dirname, 'Commands'),
+    },
     defaultHelpCommand: true,
   }
 )

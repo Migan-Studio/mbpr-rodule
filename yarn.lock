@@ -316,6 +316,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+discommand@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/discommand/-/discommand-11.0.1.tgz#182fe24907804dcd058c4a99ac7437f7c385369f"
+  integrity sha512-rzhnrbNJwLZmoVLkrBL7XEk7pH6uM6duxcGnpRzXvAnmhjK+x2dLs7kEZ9fipw7e04FbmqNc7/cch80ssZLLFQ==
+
 discord-api-types@^0.37.20:
   version "0.37.20"
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.20.tgz#f23894e3e6b894abb5431ff6c4aa52471360377c"

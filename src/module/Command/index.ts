@@ -1,2 +1,2 @@
-export * from './CommandHandler'
-export * from './Command'
+import HelpCommand from './help'
+export default HelpCommand
