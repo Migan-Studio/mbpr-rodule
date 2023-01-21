@@ -8,13 +8,12 @@ import { Command } from 'discommand'
 
 export default class extends Command {
   public constructor() {
-    super('help')
-    this.data = {
+    super({
       name: 'help',
       nameLocalizations: { ko: '도움말' },
       description: "mbpr project's help",
       descriptionLocalizations: { ko: 'mbpr 프로젝트의 도움말' },
-    }
+    })
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
     const command = interaction.client.commandHandler.modules
