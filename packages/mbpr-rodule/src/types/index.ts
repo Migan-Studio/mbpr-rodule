@@ -1,8 +1,7 @@
 import type { Logger } from '@migan-studio/logger'
-import type { directory } from 'discommand'
+import type { DiscommandClientOptions } from 'discommand'
 
-export interface MbprOptions {
-  directory: directory
+export interface MbprOptions extends DiscommandClientOptions {
   defaultHelpCommand?: boolean
   token: string
 }
