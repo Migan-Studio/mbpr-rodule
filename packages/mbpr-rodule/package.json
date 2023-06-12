@@ -1,6 +1,6 @@
 {
   "name": "mbpr-rodule",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "type": "module",
   "license": "MIT",
   "files": [
@@ -27,6 +27,6 @@
   "dependencies": {
     "@migan-studio/logger": "workspace:^",
     "chalk": "^5.2.0",
-    "discommand": "^12.0.1"
+    "discommand": "^13.0.0"
   }
 }

@@ -8,7 +8,7 @@
     "mbpr-rodule": "workspace:^"
   },
   "scripts": {
-    "start": "ts-node-esm src"
+    "start": "ts-node-esm src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
