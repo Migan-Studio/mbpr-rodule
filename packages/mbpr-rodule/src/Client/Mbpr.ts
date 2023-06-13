@@ -14,11 +14,9 @@ export class Mbpr extends DiscommandClient {
     public readonly mbprOptions: MbprOptions
   ) {
     super(clientOptions, {
-      directory: {
-        command: mbprOptions.directory.command,
-        listener: mbprOptions.directory.listener,
-      },
+      ...mbprOptions,
     })
+
     if (mbprOptions.defaultHelpCommand)
       this.commandHandler.load([new HelpCommand()])
   }
