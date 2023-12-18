@@ -646,10 +646,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discommand@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "discommand@npm:13.0.0"
-  checksum: e90130e9abc613e907db5e32794d0e1fbc228e94e4a8c18799f7b238dd22e5ea25584b2f74f5bb1eabd09efc7e284ded8a9d2576ecbfaaa3ccf0d141a6075906
+"discommand@npm:^13.2.2":
+  version: 13.2.2
+  resolution: "discommand@npm:13.2.2"
+  checksum: 693fd195ed59b47084658f870638ef44182ba049267f40a6d3f52e14d019d14ad2c0656717c6e05ee83d8b72e79d7dfa1e31c83b9783df83d22d3632d9d27e47
   languageName: node
   linkType: hard
 
@@ -1419,7 +1419,7 @@ __metadata:
     "@migan/prettier-config": ^1.0.0
     "@types/node": ^18.11.18
     chalk: ^5.2.0
-    discommand: ^13.0.0
+    discommand: ^13.2.2
     discord.js: ^14.7.1
     prettier: ^2.8.3
     ts-node: ^10.9.1
